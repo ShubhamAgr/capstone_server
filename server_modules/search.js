@@ -8,3 +8,19 @@ var college_information_model = require('../models/collegeInformation');
 exports.search_user = function(username,callback){
 callback({'response':true});
 }
+
+exports.searchEvents = function(username,callback){
+callback({'response':true});
+}
+
+exports.searchProcess = function(username,callback){
+callback({'response':true});
+}
+
+exports.searchCollegeBuildings = function(username,callback){
+callback({'response':true});
+}
+
+exports.searchCollegeInformation = function(username,callback){
+callback({'response':true});
+}

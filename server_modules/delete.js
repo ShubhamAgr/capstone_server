@@ -8,3 +8,19 @@ var college_information_model = require('../models/collegeInformation');
 exports.delete_user = function(username,callback){
 callback({'response':true});
 }
+
+exports.deleteEvents = function(username,callback){
+callback({'response':true});
+}
+
+exports.deleteProcess = function(username,callback){
+callback({'response':true});
+}
+
+exports.deleteCollegeBuildings = function(username,callback){
+callback({'response':true});
+}
+
+exports.deleteCollegeInformation = function(username,callback){
+callback({'response':true});
+}

@@ -5,7 +5,7 @@ var __delete = require('./routes/deleting');
 module.exports = function(app) {
   __create(app);
   __update(app);
-  __search(app);
+  // __search(app);
   __delete(app);
   app.get('/',function(req,res){
     res.status(200).send("This request is for Home Page");

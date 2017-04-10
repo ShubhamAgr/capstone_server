@@ -11,6 +11,7 @@ var server = require('http').Server(app);
 var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
+var __search = require('./routes/searching')
 var db;
 const url = "mongodb://localhost:27017/capstone-database";
 require('./config/database&collections')(MongoClient,url);
@@ -18,6 +19,8 @@ mongoose.connect(url);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+__search(MongoClient,url,app);
 require('./routes.js')(app);
+
 server.listen(3000);
 console.log("server is listening at port 3000");
