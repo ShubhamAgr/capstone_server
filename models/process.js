@@ -5,6 +5,7 @@ var Schema = new schema({
   _id:id,
   process_name:{type:String},
   process_description:{type:String},
+  created_on:{type:Date,default:Date.now()},
   steps:[String]
 },{collection:'process'});
 module.exports = mongoose.model('process',Schema);

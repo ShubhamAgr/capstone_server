@@ -13,6 +13,7 @@ var Schema = new schema({
   benefits:{type:String},
   currentQualification:{type:String},
   department_branch:{type:String},
-  discipline:{type:String}
+  discipline:{type:String},
+  created_on:{type:Date,default:Date.now()},
 },{collection:'admissions'});
 module.exports = mongoose.model('admissions',Schema);

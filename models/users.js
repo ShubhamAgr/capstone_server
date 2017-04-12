@@ -5,6 +5,7 @@ var Schema = new schema({
   _id:id,
   reg_no:{type:String},
   password:{type:String},
+  created_on:{type:Date,default:Date.now()},
   recent_activities:[{
     event_id:id,
     date:{type:Date,default:Date.now()},

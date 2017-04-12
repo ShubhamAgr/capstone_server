@@ -20,7 +20,7 @@ module.exports = function(MongoClient,url,app){
             console.log("err");
           }else{
             console.log(items);
-            res.send();
+            res.status(200).json(items[0]);
           }
         });
     });
@@ -36,7 +36,7 @@ module.exports = function(MongoClient,url,app){
             console.log("err");
           }else{
             console.log(items);
-            res.send();
+              res.status(200).json(items[0]);
           }
         });
   });
@@ -49,7 +49,7 @@ module.exports = function(MongoClient,url,app){
             console.log("err");
           }else{
             console.log(items);
-            res.send();
+              res.status(200).json(items[0]);
           }
         });
     });
@@ -63,10 +63,24 @@ module.exports = function(MongoClient,url,app){
             console.log("err");
           }else{
             console.log(items);
-            res.send();
+              res.status(200).json(items[0]);
           }
         });
   });
+  });
+
+
+  app.get("/search_admission/:query",function(req,res){
+    MongoClient.connect(url,function(err,db){
+      db.collection('admissions').find({$text:{$search:req.body.query}},{score:{$meta:"textScore"}},{sort:{score:{$meta:"textScore"}}}).toArray(function(err,items){
+        if(err){
+          console.log("err");
+        }else{
+          console.log(items);
+            res.status(200).json(items[0]);
+        }
+      });
+    });
   });
 
 
