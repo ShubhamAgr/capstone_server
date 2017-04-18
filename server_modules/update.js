@@ -29,7 +29,8 @@ exports.update_user = function(req,callback){
 }
 
 exports.updateEvents = function(req,callback){
-  event_model.find({"_id":req.body.id},function(err,events){
+
+  event_model.find({'_id':req.body.id},function(err,events){
       if(err){
         console.log(err);
       }else{
@@ -51,7 +52,7 @@ exports.updateEvents = function(req,callback){
           event_date:(req.body.event_date == undefined)?eventsObj.event_date:req.body.event_date,
           event_information:(req.body.event_information == undefined)?eventsObj.event_information:req.body.event_information,
         };
-        event_model.findOneAndUpdate({"_id":id},myObj,{safe:true,upsert:true},function(err){
+        event_model.findOneAndUpdate({"_id":req.body.id},myObj,{safe:true,upsert:true},function(err){
               if(err){
                 callback({"response":false});
               }else{
@@ -73,14 +74,14 @@ exports.updateCollegeBuildings = function(username,callback){
   college_building_model.find({"_id":req.body.id},function(err,buildings){
     var buildObj = buildings[0].toObject();
     var myObj = {
-      block_location:[String],// In format of longitude_latitude by gps location ex. 18.8_20.8
-      block_id:{type:String},
-      block_information:{type:String},
+      // block_location:[String],// In format of longitude_latitude by gps location ex. 18.8_20.8
+      block_id:(req.body.block_id == undefined)?buildObj.block_id:req.body.block_id,
+      block_information:(req.body.block_information == undefined)?buildObj.block_information:req.body.block_information,
     }
   });
 }
 
-exports.updateCollegeInformation = function(username,callback){
+exports.updateCollegeInformation = function(req,callback){
 college_information_model.find({"_id":req.body.id},function(err,information){
   var infObj = information[0].toObject();
   // var myObj = {
@@ -94,18 +95,18 @@ college_information_model.find({"_id":req.body.id},function(err,information){
 exports.updateAdmissions = function(req,callback){
 admission_model.find({"_id":req.body.id},function(err,admission){
  var adObj = admission[0].toObject();
- // var myObj = {
- //   procedure:()?:,
- //   Elgibility:()?:,
- //   fees:()?:,
- //   lpuNest:()?:,
- //   policy:()?:,
- //   scholarship:()?:,
- //   subjects:()?:,
- //   benefits:()?:,
- //   currentQualification:()?:,
- //   department_branch:()?:,
- //   discipline:()?:
- // }
+ var myObj = {
+   procedure:(req.body.procedure == undefined)?adObj.procedure:req.body.procedure,
+   Elgibility:(req.body.eligibility == undefined)?adObj.Eligibility:req.body.eligibility,
+   fees:(req.body.fees == undefined)?adObj.fees:req.body.fees,
+   lpuNest:(req.body.lpuNest == undefined)?adObj.lpuNest:req.body.lpuNest,
+   policy:(req.body.policy == undefined)?adObj.policy:req.body.policy,
+   scholarship:(req.body.scholarship == undefined)?adObj.scholarship:req.body.scholarship,
+   subjects:(req.body.subjects == undefined)?adObj.subjects:req.body.subjects,
+   benefits:(req.body.benefits == undefined)?adObj.benefits:req.body.benefits,
+   currentQualification:(req.body.currentQualification == undefined)?adObj.currentQualification:req.body.currentQualification,
+   department_branch:(req.body.department_branch ==  undefined)?adObj.department_branch:req.body.department_branch,
+   discipline:(req.body.discipline == undefined)?adObj.discipline:req.body.discipline
+ }
 });
 }

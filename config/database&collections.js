@@ -40,6 +40,24 @@ module.exports = function(MongoClient,url){
       });
     }
     });
+    db.collection("placements",{ },function(err,coll){
+    if(err) {
+      console.log(err);
+    }else{
+      console.log("not err");
+      db.createCollection("placements",function(err,result){
+        // assert.equal(null,err);
+        db.collection("placements").createIndex({'$**':"text"},function(err,o){
+          if(err){
+            console.log(err);
+          }else{
+            console.log(o);
+          }
+        });
+        db.close();
+      });
+    }
+    });
     db.collection("college_buildings",{ },function(err,coll){
       if(err) {
         console.log(err);

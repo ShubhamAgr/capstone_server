@@ -3,6 +3,7 @@ var user_model = require('../models/users');
 var event_model = require('../models/events');
 var process_model = require('../models/process');
 var admission_model = require('../models/admission');
+var placement_model = require('../model/placement');
 var college_building_model = require('../models/college_buildings');
 var college_information_model = require('../models/collegeInformation');
 
@@ -11,6 +12,7 @@ exports.createUser = function(req,callback){
   var newUser= new user_model({
     _id:mongoose.Types.ObjectId(id),
     reg_no:req.body.reg_no,
+    created_on:Date.now(),
     password:req.body.password
   },{collection:'users'});
   newUser.save(function(err,newUser){
@@ -21,6 +23,14 @@ exports.createUser = function(req,callback){
 
     }
 });
+}
+
+exports.createPlacement = function(req,callback){
+ var id = new mongoose.Types.ObjectId;
+ var newPlacements = new placement_model({
+
+ },{collection:'placements'});
+
 }
 
 exports.createEvents = function(req,callback){
@@ -36,7 +46,7 @@ exports.createEvents = function(req,callback){
     procedure:req.body.procedure,
     date_time:Date.now(),
     TypeOfEvents:req.body.event_type,
-
+    created_on:Date.now(),
 
     event_name:req.body.event_name,
     event_type:req.body.event_type,
@@ -66,6 +76,7 @@ exports.createAdmissions = function(req,callback){
     scholarship:req.body.scholarship,
     subjects:req.body.subjects,
     benefits:req.body.benefits,
+    created_on:Date.now(),
     currentQualification:req.body.currentQualification,
     department_branch:req.body.department_branch,
     discipline:req.body.discipline
@@ -85,6 +96,7 @@ exports.createProcess = function(req,callback){
   var newProcess= new process_model({
     _id:mongoose.Types.ObjectId(id),
     process_name:req.body.process_name,
+    created_on:Date.now(),
     process_description:req.body.process_description,
     steps:msteps
   },{collection:'process'});
@@ -106,6 +118,7 @@ exports.createCollegeBuildings = function(req,callback){
     _id:mongoose.Types.ObjectId(id),
     block_location:mlocations,
     block_id:req.body.block_id,
+    created_on:Date.now(),
     block_information:req.body.block_information,
   },{collection:'college_buildings'});
 
@@ -124,6 +137,7 @@ exports.createCollegeInformation = function(req,callback){
   var newInformation= new college_information_model({
     _id:mongoose.Types.ObjectId(id),
     information_title:req.body.title,
+    created_on:Date.now(),
     information_description:req.body.description
   },{collection:'college_information'});
 

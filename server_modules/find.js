@@ -19,7 +19,7 @@ exports.getUser = function(topicId,range,callback){
   });
 }
 
-exports.getEvent = function(topicId,range,callback){
+exports.getEvent = function(range,callback){
   //range will be in format of 10_12
   // var responseArray = new Array();
   var ranges = range.split("_");
@@ -31,7 +31,7 @@ exports.getEvent = function(topicId,range,callback){
   });
 }
 
-exports.getProcess = function(topicId,range,callback){
+exports.getProcess = function(range,callback){
   //range will be in format of 10_12
   // var responseArray = new Array();
   var ranges = range.split("_");
@@ -43,7 +43,7 @@ exports.getProcess = function(topicId,range,callback){
   });
 }
 
-exports.getAdmission = function(topicId,range,callback){
+exports.getAdmission = function(range,callback){
   //range will be in format of 10_12
   // var responseArray = new Array();
   var ranges = range.split("_");
@@ -55,7 +55,7 @@ exports.getAdmission = function(topicId,range,callback){
   });
 }
 
-exports.getCollegeBuilding = function(topicId,range,callback){
+exports.getCollegeBuilding = function(range,callback){
   //range will be in format of 10_12
   // var responseArray = new Array();
   var ranges = range.split("_");
@@ -67,7 +67,7 @@ exports.getCollegeBuilding = function(topicId,range,callback){
   });
 }
 
-exports.getCollegeInformation = function(topicId,range,callback){
+exports.getCollegeInformation = function(range,callback){
   //range will be in format of 10_12
   // var responseArray = new Array();
   var ranges = range.split("_");

@@ -1,4 +1,4 @@
-var create_module = require('../server_modules/update');
+var update_module = require('../server_modules/update');
 
 module.exports = function(app){
   app.post("/update_user",function(req,res){
@@ -6,7 +6,9 @@ module.exports = function(app){
   });
 
   app.post("/update_events",function(req,res){
-    res.status(200).json({"message":"successful"});
+    update_module.updateEvents(req,function(response){
+      res.status(200).json(response);
+    })
   });
 
   app.post("/update_process",function(req,res){

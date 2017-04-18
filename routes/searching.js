@@ -1,3 +1,4 @@
+
 var create_module = require('../server_modules/search');
 var event_model = require('../models/events');
 var assert = require('assert');
@@ -20,7 +21,11 @@ module.exports = function(MongoClient,url,app){
             console.log("err");
           }else{
             console.log(items);
-            res.status(200).json(items[0]);
+            var mjson = [];
+            if(!(items == undefined)){
+            mjson.push(items[0]);
+            }
+            res.status(200).json(mjson);
           }
         });
     });
