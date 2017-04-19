@@ -3,6 +3,7 @@ var user_model = require('../models/users');
 var event_model = require('../models/events');
 var process_model = require('../models/process');
 var admission_model = require('../models/admission');
+var placement_model = require('../models/placement');
 var college_building_model = require('../models/college_buildings');
 var college_information_model = require('../models/collegeInformation');
 
@@ -14,6 +15,16 @@ exports.getUser = function(topicId,range,callback){
   var initial = Number.parseInt(ranges[0]);
   var final = Number.parseInt(ranges[1]);
   var query = user_model.find().sort('-created_on').skip(initial).limit(final);
+  query.exec(function(err,values){
+  callback(values);
+  });
+}
+
+exports.getPlacement = function(range,callback){
+  var ranges = range.split("_");
+  var initial = Number.parseInt(ranges[0]);
+  var final = Number.parseInt(ranges[1]);
+  var query = placement_model.find().sort('date_period').skip(initial).limit(final);
   query.exec(function(err,values){
   callback(values);
   });

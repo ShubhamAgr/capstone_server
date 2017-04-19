@@ -11,6 +11,12 @@ module.exports = function(app){
     })
   });
 
+  app.post("/update_placement",function(req,res){
+    update_module.updatePlacement(req,function(response){
+      res.status(200).json(response);
+    })
+  });
+
   app.post("/update_process",function(req,res){
     res.status(200).json({"message":"successful"});
   });

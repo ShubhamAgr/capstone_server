@@ -14,6 +14,8 @@ var Schema = new schema({
   upcoming1:{type:String},
   numbers:{type:String},
   packagesOffered:{type:String},
-  upcoming:{type:String}
+  upcoming:{type:String},
+  priorityParameter:{type:String},
+  keywords:{type:String}
 },{collection:'placements'});
 module.exports = mongoose.model('placements',Schema);

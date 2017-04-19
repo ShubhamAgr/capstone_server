@@ -5,6 +5,7 @@ var process_model = require('../models/process');
 var college_building_model = require('../models/college_buildings');
 var college_information_model = require('../models/collegeInformation');
 var admission_model = require('../models/admission');
+var placement_model = require('../models/placement');
 
 exports.update_user = function(req,callback){
   //pehle user model fetch karo then update and save it...
@@ -78,6 +79,14 @@ exports.updateCollegeBuildings = function(username,callback){
       block_id:(req.body.block_id == undefined)?buildObj.block_id:req.body.block_id,
       block_information:(req.body.block_information == undefined)?buildObj.block_information:req.body.block_information,
     }
+
+    college_building_model.findOneAndUpdate({"_id":req.body.id},myObj,{safe:true,upsert:true},function(err){
+          if(err){
+            callback({"response":false});
+          }else{
+            callback({"response":true});
+          }
+        });
   });
 }
 
@@ -89,6 +98,32 @@ college_information_model.find({"_id":req.body.id},function(err,information){
   //   information_description:()?:,
   //   information_file:()?:
   // }
+});
+}
+
+exports.updatePlacement = function(req,callback){
+placement_model.find({"_id":req.body.id},function(err,placement){
+  var placeObj = placement[0].toObject();
+  var myObj = {
+    policy:(req.body.policy == undefined)?placeObj.policy:req.body.policy,
+    procedure:(req.body.procedure == undefined)?placeObj.procedure:req.body.procedure,
+    companiesPlacement:(req.body.companiesPlacement == undefined)?placeObj.companiesPlacement:req.body.companiesPlacement,
+    visitedPastComp:(req.body.visitedPastComp == undefined)?placeObj.visitedPastComp:req.body.visitedPastComp,
+    packagesOffered1:(req.body.packagesOffered1 == undefined)?placeObj.packagesOffered1:req.body.packagesOffered1,
+    department_branch:(req.body.department_branch == undefined)?placeObj.department_branch:req.body.department_branch,
+    upcoming1:(req.body.upcoming1 == undefined)?placeObj.upcoming1:req.body.upcoming1,
+    numbers:(req.body.numbers == undefined)?placeObj.numbers:req.body.numbers,
+    packagesOffered:(req.body.packagesOffered == undefined)?placeObj.packagesOffered:req.body.packagesOffered,
+    upcoming:(req.body.upcoming == undefined)?placeObj.upcoming:req.body.upcoming
+  };
+  placement_model.findOneAndUpdate({"_id":req.body.id},myObj,{safe:true,upsert:true},function(err){
+        if(err){
+          callback({"response":false});
+        }else{
+          callback({"response":true});
+        }
+      });
+
 });
 }
 
@@ -108,5 +143,12 @@ admission_model.find({"_id":req.body.id},function(err,admission){
    department_branch:(req.body.department_branch ==  undefined)?adObj.department_branch:req.body.department_branch,
    discipline:(req.body.discipline == undefined)?adObj.discipline:req.body.discipline
  }
+admission_model.findOneAndUpdate({"_id":req.body.id},myObj,{safe:true,upsert:true},function(err){
+      if(err){
+        callback({"response":false});
+      }else{
+        callback({"response":true});
+      }
+    });
 });
 }

@@ -13,6 +13,12 @@ module.exports = function(app){
     });
   });
 
+  app.post("/create_placement",function(req,res){
+    create_module.createPlacement(req,function(response){
+    res.status(200).json(response);
+    });
+  });
+
   app.post("/create_admissions",function(req,res){
     create_module.createEvents(req,function(response){
     res.status(200).json(response);

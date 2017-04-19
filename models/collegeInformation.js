@@ -6,6 +6,7 @@ var Schema = new schema({
   information_title:{type:String},
   information_description:{type:String},
   information_file:{type:String},
+  keywords:{type:String},
   created_on:{type:Date,default:Date.now()}
 },{collection:'college_information'});
 module.exports = mongoose.model('college_information',Schema);

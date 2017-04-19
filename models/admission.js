@@ -14,6 +14,8 @@ var Schema = new schema({
   currentQualification:{type:String},
   department_branch:{type:String},
   discipline:{type:String},
+  priorityParameter:{type:String},
+  keywords:{type:String},
   created_on:{type:Date,default:Date.now()},
 },{collection:'admissions'});
 module.exports = mongoose.model('admissions',Schema);

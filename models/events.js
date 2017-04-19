@@ -19,6 +19,8 @@ var Schema = new schema({
   event_date:{type:Date,default:Date.now()},
   event_information:{type:String},
   created_on:{type:Date,default:Date.now()},
+  priorityParameter:{type:String},
+  keywords:{type:String},
   event_files:[{
     _id:id,
     file_name:{type:String}

@@ -13,6 +13,12 @@ module.exports = function(app){
     });
   });
 
+  app.post("/find_placement",function(req,res){
+    find_module.getPlacement(req.body.range,function(response){
+    res.status(200).json(response);
+    });
+  });
+
   app.post("/find_admissions",function(req,res){
     find_module.getAdmission(req.body.range,function(response){
     res.status(200).json(response);
