@@ -15,6 +15,7 @@ var Schema = new schema({
   numbers:{type:String},
   packagesOffered:{type:String},
   upcoming:{type:String},
+  description:{type:String},
   priorityParameter:{type:String},
   keywords:{type:String}
 },{collection:'placements'});

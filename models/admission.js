@@ -15,6 +15,7 @@ var Schema = new schema({
   department_branch:{type:String},
   discipline:{type:String},
   priorityParameter:{type:String},
+  description:{type:String},
   keywords:{type:String},
   created_on:{type:Date,default:Date.now()},
 },{collection:'admissions'});

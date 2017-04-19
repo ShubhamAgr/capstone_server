@@ -113,6 +113,7 @@ placement_model.find({"_id":req.body.id},function(err,placement){
     department_branch:(req.body.department_branch == undefined)?placeObj.department_branch:req.body.department_branch,
     upcoming1:(req.body.upcoming1 == undefined)?placeObj.upcoming1:req.body.upcoming1,
     numbers:(req.body.numbers == undefined)?placeObj.numbers:req.body.numbers,
+    description:(req.body.description==undefined)?placeObj.description:req.body.description,
     packagesOffered:(req.body.packagesOffered == undefined)?placeObj.packagesOffered:req.body.packagesOffered,
     upcoming:(req.body.upcoming == undefined)?placeObj.upcoming:req.body.upcoming
   };
@@ -139,6 +140,7 @@ admission_model.find({"_id":req.body.id},function(err,admission){
    scholarship:(req.body.scholarship == undefined)?adObj.scholarship:req.body.scholarship,
    subjects:(req.body.subjects == undefined)?adObj.subjects:req.body.subjects,
    benefits:(req.body.benefits == undefined)?adObj.benefits:req.body.benefits,
+   description:(req.body.description==undefined)?adObj.description:req.body.description,
    currentQualification:(req.body.currentQualification == undefined)?adObj.currentQualification:req.body.currentQualification,
    department_branch:(req.body.department_branch ==  undefined)?adObj.department_branch:req.body.department_branch,
    discipline:(req.body.discipline == undefined)?adObj.discipline:req.body.discipline

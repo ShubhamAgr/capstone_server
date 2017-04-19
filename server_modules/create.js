@@ -42,6 +42,7 @@ exports.createPlacement = function(req,callback){
    packagesOffered:req.body.packagesOffered,
    upcoming:req.body.upcoming,
    keywords:req.body.keywords,
+   description:req.body.description,
    priorityParameter:req.body.priorityParameter
  },{collection:'placements'});
 newPlacements.save(function(err,newPlacements){
@@ -98,6 +99,7 @@ exports.createAdmissions = function(req,callback){
     subjects:req.body.subjects,
     benefits:req.body.benefits,
     created_on:Date.now(),
+    description:req.body.description,
     currentQualification:req.body.currentQualification,
     department_branch:req.body.department_branch,
     discipline:req.body.discipline,
