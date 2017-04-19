@@ -13,6 +13,12 @@ module.exports = function(app){
     });
   });
 
+  app.post("/delete_placement",function(req,res){
+    delete_module.delete_placement(req,function(response){
+      res.status(200).json(response);
+    });
+  });
+
   app.post("/delete_process",function(req,res){
     delete_module.deleteProcess(req,function(response){
       res.status(200).json(response);
